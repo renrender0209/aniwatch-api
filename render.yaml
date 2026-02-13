@@ -1,10 +1,11 @@
 services:
   - type: web
     name: aniwatch-api
-    runtime: docker
-    repo: https://github.com/ghoshRitesh12/aniwatch-api.git
+    env: node
     plan: free
-    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    autoDeploy: true
     envVars:
-      - key: PORT
-        value: 4000
+      - key: ANIWATCH_API_DEPLOYMENT_ENV
+        value: render
